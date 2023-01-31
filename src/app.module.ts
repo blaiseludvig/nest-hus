@@ -1,3 +1,4 @@
+import { Order } from './order.entity';
 import { Screw } from './screw.entity';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -12,7 +13,7 @@ import { AppService } from './app.service';
       username: 'root',
       password: '',
       database: 'nest_csavar',
-      entities: [Screw],
+      entities: [Screw, Order],
       synchronize: true,
     }),
   ],

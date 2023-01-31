@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Order } from './order.entity';
 
 @Entity()
 export class Screw {
@@ -16,4 +17,7 @@ export class Screw {
 
   @Column({ type: 'decimal', scale: 2 })
   price: number;
+
+  @OneToMany(() => Order, (order) => order.screw)
+  orders: Order[];
 }
