@@ -76,6 +76,8 @@ export class AppController {
         screw: screw,
         quantity: orderDto.quantity,
       });
+
+      return { total: orderDto.quantity * screw.price };
     }
   }
 
@@ -96,6 +98,8 @@ export class AppController {
         screw: screw,
         quantity: orderDto.quantity,
       });
+
+      return { total: orderDto.quantity * screw.price };
     }
   }
 }
