@@ -1,3 +1,4 @@
+import { Screw } from './screw.entity';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
@@ -10,10 +11,8 @@ import { AppService } from './app.service';
       host: 'localhost',
       username: 'root',
       password: '',
-      database: 'database',
-      entities: [
-        /* List of entities here */
-      ],
+      database: 'nest_csavar',
+      entities: [Screw],
       synchronize: true,
     }),
   ],
