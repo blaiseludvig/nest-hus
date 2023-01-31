@@ -1,3 +1,4 @@
+import { alternativeOrderDto } from './alternativeOrder.dto';
 import { OrderDto } from './order.dto';
 import { Order } from './order.entity';
 import { ScrewDto } from './screw.dto';
@@ -68,6 +69,26 @@ export class AppController {
       return { error: 'Insufficient stock' };
     } else {
       this.screwRepository.update(id, {
+        stock: screw.stock - orderDto.quantity,
+      });
+
+      this.orderRepository.save({
+        screw: screw,
+        quantity: orderDto.quantity,
+      });
+    }
+  }
+
+  @Post('/api/screw/rendeles')
+  async alternativeCreateOrder(@Body() orderDto: alternativeOrderDto) {
+    const screw = await this.screwRepository.findOneBy({
+      id: orderDto.screwId,
+    });
+
+    if (screw.stock < orderDto.quantity) {
+      return { error: 'Insufficient stock' };
+    } else {
+      this.screwRepository.update(orderDto.screwId, {
         stock: screw.stock - orderDto.quantity,
       });
 
