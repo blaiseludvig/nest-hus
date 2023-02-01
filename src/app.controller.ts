@@ -94,12 +94,17 @@ export class AppController {
         stock: screw.stock - orderDto.quantity,
       });
 
-      this.orderRepository.save({
+      const order = await this.orderRepository.save({
         screw: screw,
         quantity: orderDto.quantity,
       });
 
-      return { total: orderDto.quantity * screw.price };
+      const orderId = order.id;
+      const screwId = order.screw.id;
+      const quantity = order.quantity;
+      const total = orderDto.quantity * screw.price;
+
+      return { orderId, screwId, quantity, total };
     }
   }
 }
