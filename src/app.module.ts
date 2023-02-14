@@ -1,9 +1,8 @@
-import { Order } from './order.entity';
-import { Screw } from './screw.entity';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import Meat from './meat.entity';
 
 @Module({
   imports: [
@@ -12,8 +11,8 @@ import { AppService } from './app.service';
       host: 'localhost',
       username: 'root',
       password: '',
-      database: 'nest_csavar',
-      entities: [Screw, Order],
+      database: 'nest_hus',
+      entities: [Meat],
       synchronize: true,
     }),
   ],
