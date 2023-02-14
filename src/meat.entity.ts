@@ -14,6 +14,6 @@ export default class Meat {
   @Column()
   cut: string;
 
-  @Column({ type: 'decimal', scale: 2 })
+  @Column({ type: 'decimal', precision: 10, scale: 2 })
   price: number;
 }
